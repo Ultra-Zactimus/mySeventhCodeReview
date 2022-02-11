@@ -25,8 +25,8 @@ function grabResults(response) {
     $('#ruble').text(`The conversion for ${input} USD is ${response.conversion_rates.RUB} RUB`);
   } else {
     $('#error').text(`(<error>) ${response} (<error>)`);
-    $('#typeErr1').text(`Error 404 Not Found: "This means you have entered an invalid input."`);
-    $('#typeErr2').text(`Error 401 Unauthorized: "This means your API Key is invalid."`);
+    // $('#typeErr1').text(`Error 404 Not Found: "This means you have entered an invalid input."`);
+    // $('#typeErr2').text(`Error 401 Unauthorized: "This means your API Key is invalid."`);
   }
 }
 
@@ -36,12 +36,11 @@ async function apiCall(exchange, input) {
 }
 
 $(document).ready(function() {
-  $('#selector').on('change', function(event) {
-    event.preventDefault();
-    let exchange = $('#currency').val();
-    $('#button').on('click', function() {
-      let input = $('#usd').val();
-      apiCall(exchange, input);
-    });
+  $('#button').on('click', function() {
+    let input = $('#usd').val();
+    let exchange = $('#selector').val();
+    apiCall(exchange, input);
+    console.log(input);
+    console.log(exchange);
   });
 });
