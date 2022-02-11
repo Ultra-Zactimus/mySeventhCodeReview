@@ -5,24 +5,16 @@ import './css/styles.css';
 import Exchange from './js/exchange.js';
 
 function clearResults () {
-    $('#').val("");
-    $('#').text("");
-    $('#').text("");
-    $('#').text("");
-    $('#').text("");
-    $('#').text("");
-    $('#').text("");
-    $('#').text("");
-    $('#').text("");
+    $('#userInput').val("");
+    $('#currency').text("");
+    $('#error').text("");
+    $('#typeErr1').text("");
+    $('#typeErr2').text("");
 }
 
 function grabResults(response) {
   if (response.main) {
-    $('#').text(``);
-    $('#').text(``);
-    $('#').text(``);
-    $('#').text(``);
-    $('#').text(``);
+    $('#currency').text(`The conversion for ${input} ${respsonse.base_code} is ${conversion}`);
   } else {
     $('#error').text(`(<error>) ${response} (<error>)`);
     $('#typeErr1').text(`Error 404 Not Found: "This means you have an invalid input."`);
