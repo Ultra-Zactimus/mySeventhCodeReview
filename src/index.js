@@ -2,7 +2,11 @@ import $ from 'jquery';
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/styles.css';
-import Exchange from './js/exchange.js';
+import Euro from './js/euro.js';
+import Yen from './js/euro.js';
+import Rupee from './js/euro.js';
+import Peso from './js/euro.js';
+import Ruble from './js/euro.js';
 
 function clearResults () {
     $('#userInput').val("");
@@ -18,27 +22,54 @@ function clearResults () {
 
 function grabResults(response) {
   if (response.result === 'success') {
-    $('#euro').text(`The conversion for USD is ${response.conversion_rates.EUR} EUR`);
-    $('#yen').text(`The conversion for USD is ${response.conversion_rates.JPY} JPY`);
-    $('#rupee').text(`The conversion for USD is ${response.conversion_rates.INR} INR`);
-    $('#peso').text(`The conversion for USD is ${response.conversion_rates.MXN} MXN`);
-    $('#ruble').text(`The conversion for USD is ${response.conversion_rates.RUB} RUB`);
+    if (response.target_code === "EUR") {
+    $('#euro').text(`The conversion for USD is ${response.conversion_result} EUR`);
+    } else if (response.target_code === "JPY") {
+    $('#yen').text(`The conversion for USD is ${response.conversion_result} JPY`);
+    } else if (response.target_code === "INR") {
+    $('#rupee').text(`The conversion for USD is ${response.conversion_result} INR`);
+    } else if (response.target_code === "MXN") {
+    $('#peso').text(`The conversion for USD is ${response.conversion_result} MXN`);
+    } else if (response.target_code === "RUB") {
+    $('#ruble').text(`The conversion for USD is ${response.conversion_result} RUB`);
+    }
   } else {
     $('#error').text(`(<error>) ${response} (<error>)`);
-    // $('#typeErr1').text(`Error 404 Not Found: "This means you have entered an invalid input."`);
-    // $('#typeErr2').text(`Error 401 Unauthorized: "This means your API Key is invalid."`);
   }
 }
 
 async function apiCall(exchange) {
-  const response = await Exchange.moneyConverter(exchange);
-  grabResults(response);
+  if (exchange === 'EUR') {
+    async function euroCall(input) {
+      const response = await Euro.moneyConverter(input);
+      grabResults(response);
+    }
+  } else if (exchange === 'JPY') {
+    async function yenCall(input) {
+      const response = await Yen.moneyConverter(input);
+      grabResults(response);
+    }
+  } else if (exchange === 'INR') {
+    async function rupeeCall(input) {
+      const response = await Rupee.moneyConverter(input);
+      grabResults(response);
+    }
+  } else if (exchange === 'MXN') {
+    async function pesoCall(input) {
+      const response = await Peso.moneyConverter(input);
+      grabResults(response);
+    }
+  } else if (exchange === 'RUB') {
+    async function rubleCall(input) {
+      const response = await Ruble.moneyConverter(input);
+      grabResults(response);
+    }
+  }
 }
 
 $(document).ready(function() {
   $('#button').on('click', function() {
-    let money = $('#usd').val();
-    // const input = parseInt(money);
+    let input = parseInt($('#usd').val());
     let exchange = $('#selector').val();
     // clearResults();
     apiCall(exchange);
