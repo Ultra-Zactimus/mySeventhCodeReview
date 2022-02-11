@@ -1,7 +1,7 @@
 export default class Exchange {
-  static async moneyConverter(exchange, input) {
+  static async moneyConverter(exchange) {
     try {
-      const response = await fetch(`https://v6.exchangerate-api.com/v6/${API_KEY}/pair/USD/${exchange}/${input}`);
+      const response = await fetch(`https://v6.exchangerate-api.com/v6/${process.env.API_KEY}/pair/USD/${exchange}/`);
       if (!response.ok) {
         throw Error(response.status + " " + response.statusText);
       } return response.json();

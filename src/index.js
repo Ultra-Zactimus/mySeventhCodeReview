@@ -17,12 +17,12 @@ function clearResults () {
 }
 
 function grabResults(response) {
-  if (response.main) {
-    $('#euro').text(`The conversion for ${input} USD is ${response.conversion_rates.EUR} EUR`);
-    $('#yen').text(`The conversion for ${input} USD is ${response.conversion_rates.JPY} JPY`);
-    $('#rupee').text(`The conversion for ${input} USD is ${response.conversion_rates.INR} INR`);
-    $('#peso').text(`The conversion for ${input} USD is ${response.conversion_rates.MXN} MXN`);
-    $('#ruble').text(`The conversion for ${input} USD is ${response.conversion_rates.RUB} RUB`);
+  if (response.result === 'success') {
+    $('#euro').text(`The conversion for USD is ${response.conversion_rates.EUR} EUR`);
+    $('#yen').text(`The conversion for USD is ${response.conversion_rates.JPY} JPY`);
+    $('#rupee').text(`The conversion for USD is ${response.conversion_rates.INR} INR`);
+    $('#peso').text(`The conversion for USD is ${response.conversion_rates.MXN} MXN`);
+    $('#ruble').text(`The conversion for USD is ${response.conversion_rates.RUB} RUB`);
   } else {
     $('#error').text(`(<error>) ${response} (<error>)`);
     // $('#typeErr1').text(`Error 404 Not Found: "This means you have entered an invalid input."`);
@@ -30,17 +30,17 @@ function grabResults(response) {
   }
 }
 
-async function apiCall(exchange, input) {
-  const response = await Exchange.moneyConverter(exchange, input);
+async function apiCall(exchange) {
+  const response = await Exchange.moneyConverter(exchange);
   grabResults(response);
 }
 
 $(document).ready(function() {
   $('#button').on('click', function() {
-    let input = $('#usd').val();
+    let money = $('#usd').val();
+    // const input = parseInt(money);
     let exchange = $('#selector').val();
-    apiCall(exchange, input);
-    console.log(input);
-    console.log(exchange);
+    // clearResults();
+    apiCall(exchange);
   });
 });
