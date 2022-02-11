@@ -12,6 +12,7 @@ function clearResults () {
     $('#peso').text("");
     $('#ruble').text("");
     $('#error').text("");
+    $('#errElab').text("");
 }
 
 function getResults(response) {
@@ -29,7 +30,8 @@ function getResults(response) {
     } 
   } else {
     $('#error').text(`(<error>) ${response} (<error>)`);
-    }
+    $('#errElab').text("What errors mean: ('Failed to fetch') --Input was blank or contained a value that wasn't a number-- (403) --Your API Key is either invalid or incorrect--");
+  }
 }
 
 async function apiCall(input, exchange) {
