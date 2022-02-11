@@ -39,27 +39,27 @@ function grabResults(response) {
 }
 
 async function apiCall(exchange) {
-  if (exchange === 'EUR') {
+  if (exchange.includes('EUR')) {
     async function euroCall(input) {
       const response = await Euro.moneyConverter(input);
       grabResults(response);
     }
-  } else if (exchange === 'JPY') {
+  } else if (exchange.includes('JPY')) {
     async function yenCall(input) {
       const response = await Yen.moneyConverter(input);
       grabResults(response);
     }
-  } else if (exchange === 'INR') {
+  } else if (exchange.includes('INR')) {
     async function rupeeCall(input) {
       const response = await Rupee.moneyConverter(input);
       grabResults(response);
     }
-  } else if (exchange === 'MXN') {
+  } else if (exchange.includes('MXN')) {
     async function pesoCall(input) {
       const response = await Peso.moneyConverter(input);
       grabResults(response);
     }
-  } else if (exchange === 'RUB') {
+  } else if (exchange.includes('RUB')) {
     async function rubleCall(input) {
       const response = await Ruble.moneyConverter(input);
       grabResults(response);
@@ -70,8 +70,9 @@ async function apiCall(exchange) {
 $(document).ready(function() {
   $('#button').on('click', function() {
     let input = parseInt($('#usd').val());
+    console.log(input);
     let exchange = $('#selector').val();
-    // clearResults();
+    console.log(exchange);
     apiCall(exchange);
   });
 });
