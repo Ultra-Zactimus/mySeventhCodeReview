@@ -30,17 +30,18 @@ function grabResults(response) {
   }
 }
 
-async function apiCall(input, currency) {
-  const response = await Exchange.moneyConverter();
+async function apiCall(exchange, input) {
+  const response = await Exchange.moneyConverter(exchange, input);
   grabResults(response);
 }
 
 $(document).ready(function() {
-  $('#selector').on('change', function(){
-    let currency = $('#currency').val();
-    $('#button').on('click', function(){
+  $('#selector').on('change', function(event) {
+    event.preventDefault();
+    let exchange = $('#currency').val();
+    $('#button').on('click', function() {
       let input = $('#usd').val();
-      apiCall(input, currency);
+      apiCall(exchange, input);
     });
   });
 });
