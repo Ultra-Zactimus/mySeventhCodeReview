@@ -28,7 +28,7 @@ function getResults(response) {
       $('#ruble').text(`The conversion is ${response.conversion_result} RUB`);
     } 
   } else {
-    $('#error').text(`(<error>) ${response.error_type} (<error>)`);
+    $('#error').text(`(<error>) ${response} (<error>)`);
     }
 }
 
