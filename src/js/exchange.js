@@ -1,5 +1,5 @@
 export default class Exchange {
-  static async moneyConverter() {
+  static async moneyConverter(money) {
     try {
       const response = await fetch(`https://v6.exchangerate-api.com/v6/${API_KEY}/latest/USD`);
       if (!response.ok) {
