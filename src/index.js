@@ -20,51 +20,45 @@ function clearResults () {
     $('#typeErr2').text("");
 }
 
-function grabResults(response) {
-  if (response.result === 'success') {
-    if (response.target_code === "EUR") {
-    $('#euro').text(`The conversion for USD is ${response.conversion_result} EUR`);
-    } else if (response.target_code === "JPY") {
-    $('#yen').text(`The conversion for USD is ${response.conversion_result} JPY`);
-    } else if (response.target_code === "INR") {
-    $('#rupee').text(`The conversion for USD is ${response.conversion_result} INR`);
-    } else if (response.target_code === "MXN") {
-    $('#peso').text(`The conversion for USD is ${response.conversion_result} MXN`);
-    } else if (response.target_code === "RUB") {
-    $('#ruble').text(`The conversion for USD is ${response.conversion_result} RUB`);
-    }
+function getResults(response) {
+  if (response.result === "success") {
+    // if (response.target_code === "EUR") {
+      $('#euro').text(`The conversion is ${response.conversion_result} EUR`);
+    // } else if (response.target_code === "JPY") {
+    //   $('#yen').text(`The conversion is ${response.conversion_result} JPY`);
+    // } else if (response.target_code === "IRN") {
+    //   $('#rupee').text(`The conversion is ${response.conversion_result} INR`);
+    // } else if (response.target_code === "MXN") {
+    //   $('#peso').text(`The conversion is ${response.conversion_result} MXN`);
+    // } else if (response.target_code === "RUB") {
+    //   $('#ruble').text(`The conversion is ${response.conversion_result} RUB`);
+    // } 
   } else {
     $('#error').text(`(<error>) ${response} (<error>)`);
-  }
+    }
 }
 
-async function apiCall(exchange) {
-  if (exchange.includes('EUR')) {
-    async function euroCall(input) {
-      const response = await Euro.moneyConverter(input);
-      grabResults(response);
-    }
-  } else if (exchange.includes('JPY')) {
-    async function yenCall(input) {
-      const response = await Yen.moneyConverter(input);
-      grabResults(response);
-    }
-  } else if (exchange.includes('INR')) {
-    async function rupeeCall(input) {
-      const response = await Rupee.moneyConverter(input);
-      grabResults(response);
-    }
-  } else if (exchange.includes('MXN')) {
-    async function pesoCall(input) {
-      const response = await Peso.moneyConverter(input);
-      grabResults(response);
-    }
-  } else if (exchange.includes('RUB')) {
-    async function rubleCall(input) {
-      const response = await Ruble.moneyConverter(input);
-      grabResults(response);
-    }
-  }
+async function apiCall(input, exchange) {
+  
+    const euro = await Euro.moneyConverter(input, exchange);
+    getResults(euro);
+
+  // async function yen(input) {
+  //   const yen = await Yen.moneyConverter(input);
+  //   getResults(yen);
+  // }
+  // async function rupee(input) {
+  //   const rupee = await Rupee.moneyConverter(input);
+  //   getResults(rupee);
+  // }
+  // async function peso(input) {
+  //   const peso = await Peso.moneyConverter(input);
+  //   getResults(peso);
+  // }
+  // async function ruble(input) {
+  //   const ruble = await Ruble.moneyConverter(input);
+  //   getResults(ruble);
+  // }
 }
 
 $(document).ready(function() {
@@ -73,6 +67,6 @@ $(document).ready(function() {
     console.log(input);
     let exchange = $('#selector').val();
     console.log(exchange);
-    apiCall(exchange);
+    apiCall(input, exchange);
   });
 });
