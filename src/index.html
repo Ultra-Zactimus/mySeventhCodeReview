@@ -1,41 +1,47 @@
 <!DOCTYPE html>
 <html lang="en-US">
 <head>
+  <link href="http://fonts.cdnfonts.com/css/optima" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Abel&family=Oswald&display=swap" rel="stylesheet">
   <title>Money Exchange</title>
 </head>
 <body>
-  <h1>Welcome to the Travel Bank App</h1>
-  <p>We appreciate our customers here at Travel Bank!</p>
-  <p>We strive to ensure the most pleasant experience for all of our users.</p> 
-  <p>We have recieved your feedback and understand that some of our users have currency types they would like to convert to.</p>
-  <p>We are working hard to keep our app your number 1 money conversion app.</p>
-  <p>Thank you for your continued support and happy travels!</p>
-  <br>
-  <label for="input"><strong>Please enter the amount you would like exchanged:</strong></label>
-  <br>
-  <input type="text" id="usd">
-  <br>
-  <br>
-  <label for="select"><strong>Please select from our following options:</strong></label>
-  <br>
-  <select name="currency" id="selector">
-    <option value="EUR">Euros</option>
-    <option value="JPY">Yen</option>
-    <option value="INR">Rupees</option>
-    <option value="MXN">Pesos</option>
-    <option value="RUB">Rubles</option>
-  </select>
-  <br>
-  <br>
-  <button type="button" id="button">Submit Request</button>
-  <br>
-  <br>
-  <div id="euro"></div>
-  <div id="yen"></div>
-  <div id="rupee"></div>
-  <div id="peso"></div>
-  <div id="ruble"></div>
-  <div id="error"></div>
-  <div id="errElab"></div>
+  <div class="header-font">
+    <div id="title-font">
+      <h1>Welcome to the Travel Bank App</h1>
+    </div>
+    <p>We appreciate our customers here at Travel Bank!</p>
+    <p>We strive to ensure the most pleasant experience for all of our users.</p> 
+    <p>We have recieved your feedback and understand that some of our users have currency types they would like to convert to.</p>
+    <p>We are working hard to keep our app your number 1 money conversion app.</p>
+    <p>Thank you for your continued support and happy travels!</p>
+    <br>
+  </div>
+  <div class="selections">
+    <label for="input"><strong>Please enter the amount you would like exchanged: $</strong></label>
+    <input type="text" id="usd">
+    <br>
+    <br>
+    <label for="select"><strong>Please select from our following options:</strong></label>
+    <select name="currency" id="selector">
+      <option value="EUR">Euros</option>
+      <option value="JPY">Yen</option>
+      <option value="INR">Rupees</option>
+      <option value="MXN">Pesos</option>
+      <option value="RUB">Rubles</option>
+    </select>
+    <br>
+    <br>
+    <button type="btn btn-success" id="button">Submit Request</button>
+    <br>
+    <div id="euro"></div>
+    <div id="yen"></div>
+    <div id="rupee"></div>
+    <div id="peso"></div>
+    <div id="ruble"></div>
+    <div id="error"></div>
+    <div id="errElab"></div>
+  </div>
 </body>
 </html>

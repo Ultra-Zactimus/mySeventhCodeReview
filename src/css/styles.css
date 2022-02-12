@@ -1,3 +1,32 @@
 body {
   text-align: center;
+  background-image:url('https://www.thephoblographer.com/wp-content/uploads/2016/07/Blur_sm.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.header-font {
+  color: gold;
+  font-family: 'Oswald', sans-serif;
+  text-shadow: 2px 2px rgb(134, 132, 132);
+}
+
+#title-font {
+  font-family: 'Optima', sans-serif;
+  color: rgb(255, 255, 255);
+  text-shadow: 2px 2px rgb(134, 132, 132);
+}
+
+.selections {
+  font-family: 'Abel', sans-serif;
+  color: rgb(0, 0, 0);
+  text-shadow: 2px 2px rgb(199, 199, 199);
+}
+
+#button:hover {
+  cursor: pointer;
+}
+
+#button {
+  color:darkgrey
 }
