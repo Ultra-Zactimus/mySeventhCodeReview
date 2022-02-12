@@ -6,21 +6,21 @@ body {
 }
 
 .header-font {
-  color: gold;
+  color: rgb(80, 9, 172);
   font-family: 'Oswald', sans-serif;
-  text-shadow: 2px 2px rgb(134, 132, 132);
+  text-shadow: 2px 1px rgb(3, 183, 228);
 }
 
 #title-font {
   font-family: 'Optima', sans-serif;
-  color: rgb(255, 255, 255);
-  text-shadow: 2px 2px rgb(134, 132, 132);
+  color: gold;
+  text-shadow: 2px 2px rgb(150, 150, 150);
 }
 
 .selections {
   font-family: 'Abel', sans-serif;
-  color: rgb(0, 0, 0);
-  text-shadow: 2px 2px rgb(199, 199, 199);
+  color: rgb(185, 111, 0);
+  text-shadow: 1px 1px rgb(0, 0, 0);
 }
 
 #button:hover {
@@ -28,5 +28,12 @@ body {
 }
 
 #button {
-  color:darkgrey
+  color: white;
+  background-color: darkgrey;
+  border-radius: 25px;
+  width: 150px;
+  height: 30px;
+  text-align: center;
+  display: inline-block;
 }
+
